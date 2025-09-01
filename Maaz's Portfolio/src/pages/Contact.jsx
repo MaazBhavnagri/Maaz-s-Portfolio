@@ -14,9 +14,11 @@ export default function Contact() {
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     // Basic validation
     if (!firstName || !email || !subject || !message) {
       toast({
@@ -25,27 +27,64 @@ export default function Contact() {
       });
       return;
     }
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      toast({ title: "Invalid email", description: "Please enter a valid email address." });
+      toast({
+        title: "Invalid email",
+        description: "Please enter a valid email address.",
+      });
       return;
     }
 
-    const to = "bhavnagrimaaz@gmail.com";
-    const fullName = `${firstName}${lastName ? ` ${lastName}` : ""}`;
-    const subjectEncoded = encodeURIComponent(subject);
-    const bodyLines = [
-      `Name: ${fullName}`,
-      `Email: ${email}`,
-      "",
-      "Message:",
-      message,
-    ];
-    const bodyEncoded = encodeURIComponent(bodyLines.join("\n"));
-    const mailtoLink = `mailto:${to}?subject=${subjectEncoded}&body=${bodyEncoded}`;
+    setIsSubmitting(true);
 
-    toast({ title: "Opening your email app", description: "Review and send your message there." });
-    window.location.href = mailtoLink;
+    try {
+      // Using a reliable email service that sends directly to your inbox
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: '7c10bfc6-13d0-4184-8a0e-fb43e230592a',
+          name: `${firstName}${lastName ? ` ${lastName}` : ""}`,
+          email: email,
+          subject: subject,
+          message: message,
+          from_name: `${firstName}${lastName ? ` ${lastName}` : ""}`,
+          replyto: email,
+        })
+      });
+
+      const result = await response.json();
+      
+      if (response.ok && result.success) {
+        toast({
+          title: "Message sent successfully!",
+          description: "I'll get back to you as soon as possible.",
+        });
+        
+        // Clear form after successful submission
+        setFirstName("");
+        setLastName("");
+        setEmail("");
+        setSubject("");
+        setMessage("");
+      } else {
+        console.error('Form submission failed:', result);
+        throw new Error(result.message || 'Failed to send message');
+      }
+    } catch (error) {
+      console.error("Error sending email:", error);
+      toast({
+        title: "Error sending message",
+        description:
+          "Please try again or contact me directly at bhavnagrimaaz@gmail.com",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -86,6 +125,7 @@ export default function Contact() {
                       <Label htmlFor="firstName">First Name</Label>
                       <Input
                         id="firstName"
+                        name="firstName"
                         placeholder="Your first name"
                         className="transition-all duration-200 focus:ring-primary"
                         value={firstName}
@@ -97,6 +137,7 @@ export default function Contact() {
                       <Label htmlFor="lastName">Last Name</Label>
                       <Input
                         id="lastName"
+                        name="lastName"
                         placeholder="Your last name"
                         className="transition-all duration-200 focus:ring-primary"
                         value={lastName}
@@ -109,6 +150,7 @@ export default function Contact() {
                     <Label htmlFor="email">Email</Label>
                     <Input
                       id="email"
+                      name="email"
                       type="email"
                       placeholder="your.email@example.com"
                       className="transition-all duration-200 focus:ring-primary"
@@ -122,6 +164,7 @@ export default function Contact() {
                     <Label htmlFor="subject">Subject</Label>
                     <Input
                       id="subject"
+                      name="subject"
                       placeholder="What's this about?"
                       className="transition-all duration-200 focus:ring-primary"
                       value={subject}
@@ -134,6 +177,7 @@ export default function Contact() {
                     <Label htmlFor="message">Message</Label>
                     <Textarea
                       id="message"
+                      name="message"
                       placeholder="Tell me about your project or how I can help you..."
                       rows={6}
                       className="transition-all duration-200 focus:ring-primary resize-none"
@@ -146,10 +190,11 @@ export default function Contact() {
                   <Button
                     type="submit"
                     size="lg"
+                    disabled={isSubmitting}
                     className="w-full bg-hero-gradient hover:shadow-glow transition-all duration-300 group"
                   >
                     <Send className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
-                    Send Message
+                    {isSubmitting ? "Sending..." : "Send Message"}
                   </Button>
                 </form>
               </CardContent>
@@ -171,7 +216,7 @@ export default function Contact() {
                       <div>
                         <h3 className="font-semibold">Email</h3>
                         <p className="text-muted-foreground">
-                          bhavnagrimaaz@gmail.com
+                        bhavnagrimaaz@gmail.com
                         </p>
                       </div>
                     </div>
