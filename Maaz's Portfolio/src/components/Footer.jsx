@@ -60,14 +60,20 @@ export function Footer() {
             <div className="space-y-4">
               <h3 className="font-semibold text-foreground">Let's Connect</h3>
               <div className="flex space-x-2">
-                <Button variant="ghost" size="icon" className="hover:text-primary hover:bg-primary/10">
-                  <Github className="h-4 w-4" />
+                <Button asChild variant="ghost" size="icon" className="hover:text-primary hover:bg-primary/10">
+                  <a href="https://github.com/MaazBhavnagri" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <Github className="h-4 w-4" />
+                  </a>
                 </Button>
-                <Button variant="ghost" size="icon" className="hover:text-primary hover:bg-primary/10">
-                  <Linkedin className="h-4 w-4" />
+                <Button asChild variant="ghost" size="icon" className="hover:text-primary hover:bg-primary/10">
+                  <a href="https://www.linkedin.com/in/maaz-bhavnagri-102a03325/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <Linkedin className="h-4 w-4" />
+                  </a>
                 </Button>
-                <Button variant="ghost" size="icon" className="hover:text-primary hover:bg-primary/10">
-                  <Mail className="h-4 w-4" />
+                <Button asChild variant="ghost" size="icon" className="hover:text-primary hover:bg-primary/10">
+                  <a href="/contact" aria-label="Email">
+                    <Mail className="h-4 w-4" />
+                  </a>
                 </Button>
               </div>
               <p className="text-muted-foreground text-sm">

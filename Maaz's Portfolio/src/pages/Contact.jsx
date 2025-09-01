@@ -1,11 +1,53 @@
+import { useState } from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, MapPin, Github, Linkedin, Send } from "lucide-react";
 
 export default function Contact() {
+  const { toast } = useToast();
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Basic validation
+    if (!firstName || !email || !subject || !message) {
+      toast({
+        title: "Missing required fields",
+        description: "Please fill in First Name, Email, Subject and Message.",
+      });
+      return;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      toast({ title: "Invalid email", description: "Please enter a valid email address." });
+      return;
+    }
+
+    const to = "bhavnagrimaaz@gmail.com";
+    const fullName = `${firstName}${lastName ? ` ${lastName}` : ""}`;
+    const subjectEncoded = encodeURIComponent(subject);
+    const bodyLines = [
+      `Name: ${fullName}`,
+      `Email: ${email}`,
+      "",
+      "Message:",
+      message,
+    ];
+    const bodyEncoded = encodeURIComponent(bodyLines.join("\n"));
+    const mailtoLink = `mailto:${to}?subject=${subjectEncoded}&body=${bodyEncoded}`;
+
+    toast({ title: "Opening your email app", description: "Review and send your message there." });
+    window.location.href = mailtoLink;
+  };
+
   return (
     <div className="min-h-screen py-20 animate-fade-in">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -38,61 +80,78 @@ export default function Contact() {
                 </p>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="firstName">First Name</Label>
+                      <Input
+                        id="firstName"
+                        placeholder="Your first name"
+                        className="transition-all duration-200 focus:ring-primary"
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="lastName">Last Name</Label>
+                      <Input
+                        id="lastName"
+                        placeholder="Your last name"
+                        className="transition-all duration-200 focus:ring-primary"
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                      />
+                    </div>
+                  </div>
+
                   <div className="space-y-2">
-                    <Label htmlFor="firstName">First Name</Label>
+                    <Label htmlFor="email">Email</Label>
                     <Input
-                      id="firstName"
-                      placeholder="Your first name"
+                      id="email"
+                      type="email"
+                      placeholder="your.email@example.com"
                       className="transition-all duration-200 focus:ring-primary"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
                     />
                   </div>
+
                   <div className="space-y-2">
-                    <Label htmlFor="lastName">Last Name</Label>
+                    <Label htmlFor="subject">Subject</Label>
                     <Input
-                      id="lastName"
-                      placeholder="Your last name"
+                      id="subject"
+                      placeholder="What's this about?"
                       className="transition-all duration-200 focus:ring-primary"
+                      value={subject}
+                      onChange={(e) => setSubject(e.target.value)}
+                      required
                     />
                   </div>
-                </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="your.email@example.com"
-                    className="transition-all duration-200 focus:ring-primary"
-                  />
-                </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="message">Message</Label>
+                    <Textarea
+                      id="message"
+                      placeholder="Tell me about your project or how I can help you..."
+                      rows={6}
+                      className="transition-all duration-200 focus:ring-primary resize-none"
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      required
+                    />
+                  </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="subject">Subject</Label>
-                  <Input
-                    id="subject"
-                    placeholder="What's this about?"
-                    className="transition-all duration-200 focus:ring-primary"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea
-                    id="message"
-                    placeholder="Tell me about your project or how I can help you..."
-                    rows={6}
-                    className="transition-all duration-200 focus:ring-primary resize-none"
-                  />
-                </div>
-
-                <Button
-                  size="lg"
-                  className="w-full bg-hero-gradient hover:shadow-glow transition-all duration-300 group"
-                >
-                  <Send className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
-                  Send Message
-                </Button>
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="w-full bg-hero-gradient hover:shadow-glow transition-all duration-300 group"
+                  >
+                    <Send className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
+                    Send Message
+                  </Button>
+                </form>
               </CardContent>
             </Card>
 

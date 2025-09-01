@@ -21,8 +21,8 @@ const projects = [
     icon: Hospital,
     color: "text-blue-500",
     bgColor: "bg-blue-500/10",
-    github: "#",
-    demo: "#"
+    github: "https://github.com/MaazBhavnagri",
+    demo: "https://github.com/MaazBhavnagri"
   },
   {
     title: "SkillSync – AI-Powered Skill Analysis",
@@ -41,8 +41,8 @@ const projects = [
     icon: Users,
     color: "text-purple-500",
     bgColor: "bg-purple-500/10",
-    github: "#",
-    demo: "#"
+    github: "https://github.com/MaazBhavnagri",
+    demo: "https://github.com/MaazBhavnagri"
   }
 ]
 
@@ -88,13 +88,17 @@ export default function Projects() {
                       
                       {/* Action Buttons */}
                       <div className="flex gap-3 pt-4">
-                        <Button size="sm" variant="outline" className="group/btn">
-                          <Github className="h-4 w-4 mr-2 group-hover/btn:scale-110 transition-transform" />
-                          Code
+                        <Button size="sm" variant="outline" className="group/btn" asChild>
+                          <a href={project.github} target="_blank" rel="noopener noreferrer">
+                            <Github className="h-4 w-4 mr-2 group-hover/btn:scale-110 transition-transform" />
+                            Code
+                          </a>
                         </Button>
-                        <Button size="sm" className="bg-hero-gradient group/btn">
-                          <ExternalLink className="h-4 w-4 mr-2 group-hover/btn:scale-110 transition-transform" />
-                          Demo
+                        <Button size="sm" className="bg-hero-gradient group/btn" asChild>
+                          <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                            <ExternalLink className="h-4 w-4 mr-2 group-hover/btn:scale-110 transition-transform" />
+                            Demo
+                          </a>
                         </Button>
                       </div>
                     </div>
@@ -156,9 +160,11 @@ export default function Projects() {
                 <p className="text-muted-foreground mb-4">
                   I'm constantly working on new projects and exploring innovative technologies.
                 </p>
-                <Button variant="outline" className="border-primary/30 hover:border-primary">
-                  <Github className="h-4 w-4 mr-2" />
-                  View All on GitHub
+                <Button variant="outline" className="border-primary/30 hover:border-primary" asChild>
+                  <a href="https://github.com/MaazBhavnagri" target="_blank" rel="noopener noreferrer">
+                    <Github className="h-4 w-4 mr-2" />
+                    View All on GitHub
+                  </a>
                 </Button>
               </CardContent>
             </Card>
