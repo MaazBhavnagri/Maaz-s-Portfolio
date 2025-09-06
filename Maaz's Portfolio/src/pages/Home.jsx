@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Download, Mail, Github, Linkedin } from "lucide-react";
 import { Link } from "react-router-dom";
-import profilePicture from "@/assets/profile-picture.jpg";
+import profilePicture from "@/assets/Maaz_professional_photo.png";
 
 export default function Home() {
   return (
@@ -22,7 +22,7 @@ export default function Home() {
           <div className="flex justify-center mb-8 animate-scale-in">
             <div className="relative">
               <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-primary/20 shadow-glow hover:scale-105 transition-transform duration-300">
-                {/* <img src={proflePicture} alt="Maaz Bhavnagri Mohammed Naeem" className="w-full h-full object-cover" /> */}
+                <img src={profilePicture} alt="Maaz Bhavnagri Mohammed Naeem" className="w-full h-full object-cover" />
               </div>
               <div className="absolute inset-0 rounded-full bg-hero-gradient opacity-20 animate-pulse" />
             </div>
