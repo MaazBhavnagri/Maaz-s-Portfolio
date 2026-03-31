@@ -1,90 +1,125 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { GraduationCap, Target, Heart } from "lucide-react"
+import { motion } from "framer-motion"
 
 export default function About() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { staggerChildren: 0.15, delayChildren: 0.1 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, scale: 0.95, y: 20 },
+    visible: { opacity: 1, scale: 1, y: 0, transition: { type: "spring", stiffness: 200, damping: 20 } }
+  };
+
   return (
-    <div className="min-h-screen py-20 bg-muted/30 animate-fade-in">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen py-20 relative overflow-hidden bg-background">
+      {/* Background animated elements */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <motion.div 
+          className="max-w-4xl mx-auto"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
           {/* Section Header */}
-          <div className="text-center mb-16 animate-slide-up">
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">
-              About <span className="bg-hero-gradient bg-clip-text text-transparent">Me</span>
+          <motion.div variants={itemVariants} className="text-center mb-16">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-4 tracking-tight">
+              About <span className="bg-hero-gradient bg-clip-text text-transparent text-glow">Me</span>
             </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Passionate software engineer with a vision to transform ideas into innovative digital solutions
+            <p className="text-lg text-muted-foreground/80 max-w-2xl mx-auto font-medium leading-relaxed">
+              AI-driven full stack developer focused on building intelligent systems and solving real-world problems
             </p>
-          </div>
+          </motion.div>
 
           {/* Main Bio */}
-          <div className="mb-12 animate-slide-up" style={{ animationDelay: "0.2s" }}>
-            <Card className="p-8 bg-card-gradient border-border/50 shadow-card hover:shadow-elegant transition-all duration-300">
-              <CardContent className="p-0">
-                <p className="text-lg text-foreground/90 leading-relaxed">
-                  I'm a software engineer currently pursuing my B.E. at LJIET University, Ahmedabad, 
-                  graduating in 2027. I'm actively seeking internships and love building websites and AI models. 
-                  My goal is to become a leading AIML developer, creating solutions that make a real difference 
-                  in people's lives.
+          <motion.div variants={itemVariants} className="mb-14">
+            <Card className="glass-card border-primary/20 shadow-elegant relative overflow-hidden group">
+              <div className="absolute inset-0 bg-hero-gradient opacity-0 group-hover:opacity-5 transition-opacity duration-500" />
+              <CardContent className="p-8 md:p-10 relative z-10 space-y-6">
+                <p className="text-lg text-foreground/90 leading-relaxed font-medium">
+                  I’m a full stack developer and AI enthusiast currently pursuing my B.E. at LJIET University, Ahmedabad (Class of 2027). I specialize in <strong className="bg-hero-gradient bg-clip-text text-transparent">building AI-powered applications</strong>, including computer vision systems, multi-agent AI platforms, and optimization-based simulations.
+                </p>
+                <p className="text-lg text-foreground/90 leading-relaxed font-medium">
+                  My work goes beyond basic development — I focus on <strong className="bg-hero-gradient bg-clip-text text-transparent">designing complete systems</strong>, from backend architecture and APIs to intelligent models and user-facing interfaces. I enjoy solving complex problems using a combination of <strong className="text-foreground tracking-wide border-b border-primary/30">algorithms, machine learning, and practical product thinking</strong>.
+                </p>
+                <p className="text-lg text-foreground/90 leading-relaxed font-medium">
+                  I’m actively seeking internship opportunities where I can contribute to <strong className="bg-hero-gradient bg-clip-text text-transparent">real-world projects</strong>, learn from experienced teams, and build impactful technology.
                 </p>
               </CardContent>
             </Card>
-          </div>
+          </motion.div>
 
           {/* Info Cards */}
           <div className="grid md:grid-cols-3 gap-6">
             {/* Education */}
-            <Card className="group hover:shadow-glow transition-all duration-300 hover:-translate-y-2 animate-scale-in" style={{ animationDelay: "0.4s" }}>
-              <CardContent className="p-6 text-center">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
-                  <GraduationCap className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Education</h3>
-                <p className="text-muted-foreground">
-                  <strong>B.E. – LJIET University</strong><br />
-                  Ahmedabad, Class of 2027
-                </p>
-              </CardContent>
-            </Card>
+            <motion.div variants={itemVariants} whileHover={{ y: -5, scale: 1.02 }}>
+              <Card className="h-full glass-card group hover:border-primary/40 transition-all duration-300 shadow-card hover:shadow-elegant relative overflow-hidden">
+                <CardContent className="p-8 text-center h-full flex flex-col justify-center">
+                  <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110 text-primary transition-all duration-300 shadow-sm group-hover:shadow-glow">
+                    <GraduationCap className="h-8 w-8" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 tracking-tight">Education</h3>
+                  <p className="text-muted-foreground/90 font-medium leading-relaxed">
+                    B.E. in Computer Engineering – LJIET University, Ahmedabad (2027)
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
 
             {/* Goals */}
-            <Card className="group hover:shadow-glow transition-all duration-300 hover:-translate-y-2 animate-scale-in" style={{ animationDelay: "0.6s" }}>
-              <CardContent className="p-6 text-center">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
-                  <Target className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Goals</h3>
-                <p className="text-muted-foreground">
-                  Become a leading AIML developer creating innovative solutions for real-world problems
-                </p>
-              </CardContent>
-            </Card>
+            <motion.div variants={itemVariants} whileHover={{ y: -5, scale: 1.02 }}>
+              <Card className="h-full glass-card group hover:border-primary/40 transition-all duration-300 shadow-card hover:shadow-elegant relative overflow-hidden">
+                <CardContent className="p-8 text-center h-full flex flex-col justify-center">
+                  <div className="w-16 h-16 bg-accent/20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-accent group-hover:text-accent-foreground group-hover:scale-110 text-accent-foreground transition-all duration-300 shadow-sm group-hover:shadow-[0_0_30px_hsl(var(--accent)/0.3)]">
+                    <Target className="h-8 w-8" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 tracking-tight">Goals</h3>
+                  <p className="text-muted-foreground/90 font-medium leading-relaxed">
+                    To become an AI-focused engineer building scalable, real-world intelligent systems that combine machine learning with strong backend architecture
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
 
             {/* Passion */}
-            <Card className="group hover:shadow-glow transition-all duration-300 hover:-translate-y-2 animate-scale-in" style={{ animationDelay: "0.8s" }}>
-              <CardContent className="p-6 text-center">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
-                  <Heart className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Passion</h3>
-                <p className="text-muted-foreground">
-                  Building websites and AI models that solve problems and create meaningful impact
-                </p>
-              </CardContent>
-            </Card>
+            <motion.div variants={itemVariants} whileHover={{ y: -5, scale: 1.02 }}>
+              <Card className="h-full glass-card group hover:border-primary/40 transition-all duration-300 shadow-card hover:shadow-elegant relative overflow-hidden">
+                <CardContent className="p-8 text-center h-full flex flex-col justify-center">
+                  <div className="w-16 h-16 bg-rose-500/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-rose-500 group-hover:text-white group-hover:scale-110 text-rose-500 transition-all duration-300 shadow-sm group-hover:shadow-[0_0_30px_rgba(244,63,94,0.3)]">
+                    <Heart className="h-8 w-8" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 tracking-tight">Passion</h3>
+                  <p className="text-muted-foreground/90 font-medium leading-relaxed">
+                    Building AI-powered applications, simulation systems, and full-stack products that solve meaningful real-world problems
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
           </div>
 
           {/* Current Status */}
-          <div className="mt-12 text-center animate-fade-in" style={{ animationDelay: "1s" }}>
-            <Card className="inline-block bg-primary/5 border-primary/20 hover:shadow-glow transition-all duration-300">
-              <CardContent className="p-6">
-                <p className="text-lg">
-                  <span className="font-semibold text-primary">Currently:</span>{" "}
-                  <span className="text-foreground">Actively seeking internship opportunities</span>
+          <motion.div variants={itemVariants} className="mt-14 text-center">
+            <Card className="inline-block glass-card border-primary/40 shadow-glow relative overflow-hidden group">
+              <div className="absolute inset-0 bg-hero-gradient opacity-10 group-hover:opacity-20 transition-opacity duration-300" />
+              <CardContent className="px-8 py-5 relative z-10">
+                <p className="text-lg font-bold tracking-wide flex items-center gap-3">
+                  <span className="text-2xl animate-bounce">🚀</span>
+                  <span className="bg-hero-gradient bg-clip-text text-transparent drop-shadow-sm">
+                    Actively seeking internship opportunities in AI / Full Stack Development
+                  </span>
                 </p>
               </CardContent>
             </Card>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </div>
   )

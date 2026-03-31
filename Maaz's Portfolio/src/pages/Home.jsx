@@ -18,6 +18,9 @@ export default function Home() {
     visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 24 } }
   };
 
+  const tagline = "AI-Focused Full Stack Developer building intelligent, scalable, real-world systems";
+  const words = tagline.split(" ");
+
   return (
     <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-background">
       {/* Background animated gradients */}
@@ -54,10 +57,20 @@ export default function Home() {
               </span>
             </h1>
 
-            <p className="text-xl md:text-2xl lg:text-3xl text-foreground/80 font-medium tracking-wide flex items-center justify-center gap-2">
-              <Terminal className="w-6 h-6 text-primary" />
-              AI-Focused Full Stack Developer building intelligent, real-world systems
-            </p>
+            {/* Tagline with subtle typing / word reveal animation */}
+            <h2 className="text-xl md:text-2xl lg:text-3xl text-foreground/80 font-medium tracking-wide flex flex-wrap items-center justify-center gap-x-2 gap-y-1 mt-4">
+              <Terminal className="w-6 h-6 text-primary flex-shrink-0" />
+              {words.map((word, index) => (
+                <motion.span
+                  key={index}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 + index * 0.1, duration: 0.4 }}
+                >
+                  {word}
+                </motion.span>
+              ))}
+            </h2>
           </motion.div>
 
           {/* Description */}
@@ -65,7 +78,7 @@ export default function Home() {
             variants={itemVariants}
             className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed"
           >
-            Passionate about building innovative web applications and AI solutions. Currently pursuing B.E. at LJIET University, actively seeking opportunities to contribute to cutting-edge projects.
+            I design and build <strong className="text-foreground font-semibold">AI-powered</strong> applications and <strong className="text-foreground font-semibold">full-stack</strong> systems that solve <strong className="text-foreground font-semibold">real-world problems</strong>. From computer vision fitness analysis to multi-agent AI platforms, I focus on creating products that are both technically strong and practically useful. Currently pursuing B.E. at LJIET University and actively seeking opportunities to work on impactful, cutting-edge projects.
           </motion.p>
 
           {/* CTA Buttons */}

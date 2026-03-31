@@ -63,7 +63,7 @@ const projects = [
     color: "text-emerald-500 dark:text-emerald-400",
     bgColor: "bg-emerald-500/10",
     github: "https://github.com/MaazBhavnagri",
-    demo: "https://github.com/MaazBhavnagri",
+    demo: "https://fitformai.vercel.app/",
     isLive: true
   },
   {
