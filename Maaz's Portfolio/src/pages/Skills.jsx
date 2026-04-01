@@ -75,11 +75,11 @@ export default function Skills() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-4 tracking-tight">
-              Technical <span className="bg-hero-gradient bg-clip-text text-transparent text-glow">Skills</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-4">
+              Technical <span className="bg-hero-gradient bg-clip-text text-transparent text-glow">Arsenal</span>
             </h1>
-            <p className="text-lg text-muted-foreground/80 max-w-2xl mx-auto font-medium">
-              A comprehensive toolkit spanning from high-performance algorithms to modern UI development and AI intelligence.
+            <p className="text-lg md:text-xl text-muted-foreground/90 font-medium leading-relaxed max-w-2xl mx-auto">
+              A comprehensive toolkit of languages, frameworks, and AI technologies I use to build scalable solutions.
             </p>
           </motion.div>
 

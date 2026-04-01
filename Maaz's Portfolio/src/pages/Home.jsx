@@ -51,14 +51,14 @@ export default function Home() {
 
           {/* Main Heading */}
           <motion.div variants={itemVariants} className="space-y-4">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight">
-              <span className="bg-hero-gradient bg-clip-text text-transparent text-glow">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-4">
+              <span className="bg-hero-gradient bg-clip-text text-transparent">
                 Maaz Bhavnagri
               </span>
             </h1>
 
             {/* Tagline with subtle typing / word reveal animation */}
-            <h2 className="text-xl md:text-2xl lg:text-3xl text-foreground/80 font-medium tracking-wide flex flex-wrap items-center justify-center gap-x-2 gap-y-1 mt-4">
+            <h2 className="text-lg md:text-xl text-muted-foreground/90 font-medium leading-relaxed max-w-2xl mx-auto flex flex-wrap items-center justify-center gap-x-2 gap-y-1 mt-4">
               <Terminal className="w-6 h-6 text-primary flex-shrink-0" />
               {words.map((word, index) => (
                 <motion.span
@@ -76,7 +76,7 @@ export default function Home() {
           {/* Description */}
           <motion.p
             variants={itemVariants}
-            className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed"
+            className="text-base md:text-lg text-muted-foreground/80 leading-relaxed max-w-2xl mx-auto"
           >
             I design and build <strong className="text-foreground font-semibold">AI-powered</strong> applications and <strong className="text-foreground font-semibold">full-stack</strong> systems that solve <strong className="text-foreground font-semibold">real-world problems</strong>. From computer vision fitness analysis to multi-agent AI platforms, I focus on creating products that are both technically strong and practically useful. Currently pursuing B.E. at LJIET University and actively seeking opportunities to work on impactful, cutting-edge projects.
           </motion.p>

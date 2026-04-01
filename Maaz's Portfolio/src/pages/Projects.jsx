@@ -189,10 +189,10 @@ export default function Projects() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-4 tracking-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-4">
               Featured <span className="bg-hero-gradient bg-clip-text text-transparent text-glow">Projects</span>
             </h1>
-            <p className="text-lg text-muted-foreground/80 max-w-2xl mx-auto font-medium">
+            <p className="text-lg md:text-xl text-muted-foreground/90 font-medium leading-relaxed max-w-2xl mx-auto">
               Showcasing innovative solutions that combine modern web technologies with artificial intelligence, robust architectures, and algorithms.
             </p>
           </motion.div>
@@ -229,7 +229,7 @@ export default function Projects() {
                           <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors tracking-tight">
                             {project.title}
                           </h3>
-                          <p className="text-muted-foreground/90 leading-relaxed font-medium">
+                          <p className="text-base md:text-lg text-muted-foreground/80 leading-relaxed">
                             {project.description}
                           </p>
                         </div>
@@ -243,16 +243,18 @@ export default function Projects() {
                             </a>
                           </Button>
                           
-                          <Button 
-                            size="sm" 
-                            className={`group/btn ${project.isLive ? 'bg-primary hover:bg-primary-glow shadow-glow text-primary-foreground border-transparent' : 'glass-button border-card-foreground/10 hover:border-primary/50 bg-primary/10 text-primary hover:text-primary-foreground'}`}
-                            asChild
-                          >
-                            <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                              <ExternalLink className="h-4 w-4 mr-2 group-hover/btn:scale-110 transition-transform" />
-                              {project.isLive ? 'Live Demo' : 'Demo'}
-                            </a>
-                          </Button>
+                          {project.isLive && (
+                            <Button 
+                              size="sm" 
+                              className="group/btn bg-primary hover:bg-primary-glow shadow-glow text-primary-foreground border-transparent"
+                              asChild
+                            >
+                              <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                                <ExternalLink className="h-4 w-4 mr-2 group-hover/btn:scale-110 transition-transform" />
+                                Live Demo
+                              </a>
+                            </Button>
+                          )}
                         </div>
                       </div>
 
@@ -297,7 +299,7 @@ export default function Projects() {
 
                         {/* Project Highlights */}
                         <div className="bg-black/5 dark:bg-white/5 rounded-xl p-4 border border-black/5 dark:border-white/5">
-                          <p className="text-sm text-muted-foreground leading-relaxed">
+                          <p className="text-sm md:text-base text-muted-foreground/90 leading-relaxed font-medium">
                             {project.longDescription}
                           </p>
                         </div>
@@ -320,8 +322,8 @@ export default function Projects() {
             <Card className="inline-block glass-card border-primary/20 hover:border-primary/40 hover:shadow-glow transition-all duration-500 overflow-hidden relative group">
               <div className="absolute inset-0 bg-hero-gradient opacity-0 group-hover:opacity-5 transition-opacity duration-500" />
               <CardContent className="p-8 relative z-10">
-                <h3 className="text-2xl font-bold mb-3 tracking-tight">Constantly Exploring</h3>
-                <p className="text-muted-foreground/80 mb-6 font-medium max-w-md mx-auto">
+                <h3 className="text-2xl font-bold tracking-tight mb-3">Constantly Exploring</h3>
+                <p className="text-base md:text-lg text-muted-foreground/80 leading-relaxed max-w-2xl mx-auto mb-6">
                   I'm actively working on new AI solutions and full-stack projects to push technological bounds.
                 </p>
                 <Button size="lg" className="bg-primary hover:bg-primary-glow text-primary-foreground shadow-elegant hover:shadow-glow transition-all duration-300 rounded-full group px-8" asChild>
