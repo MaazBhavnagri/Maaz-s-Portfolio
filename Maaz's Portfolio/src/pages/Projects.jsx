@@ -226,10 +226,10 @@ export default function Projects() {
                         </div>
                         
                         <div>
-                          <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors tracking-tight">
+                          <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors tracking-tight">
                             {project.title}
                           </h3>
-                          <p className="text-base md:text-lg text-muted-foreground/80 leading-relaxed">
+                          <p className="text-sm md:text-base text-muted-foreground/80 leading-relaxed">
                             {project.description}
                           </p>
                         </div>
@@ -262,7 +262,7 @@ export default function Projects() {
                       <div className="lg:col-span-2 space-y-6">
                         {/* Tech Stack */}
                         <div>
-                          <h4 className="text-lg font-bold mb-3 flex items-center gap-2">
+                          <h4 className="text-base font-semibold mb-3 flex items-center gap-2">
                             Technology Stack
                             <div className="h-[1px] flex-1 bg-border/50 ml-2"></div>
                           </h4>
@@ -280,7 +280,7 @@ export default function Projects() {
 
                         {/* Key Features */}
                         <div>
-                          <h4 className="text-lg font-bold mb-3 flex items-center gap-2">
+                          <h4 className="text-base font-semibold mb-3 flex items-center gap-2">
                             Key Features
                             <div className="h-[1px] flex-1 bg-border/50 ml-2"></div>
                           </h4>
@@ -291,7 +291,7 @@ export default function Projects() {
                                 className="flex items-start space-x-3"
                               >
                                 <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0 shadow-glow"></div>
-                                <span className="text-sm text-muted-foreground/90 font-medium leading-relaxed">{feature}</span>
+                                <span className="text-sm text-muted-foreground/80 leading-relaxed">{feature}</span>
                               </div>
                             ))}
                           </div>
@@ -299,7 +299,7 @@ export default function Projects() {
 
                         {/* Project Highlights */}
                         <div className="bg-black/5 dark:bg-white/5 rounded-xl p-4 border border-black/5 dark:border-white/5">
-                          <p className="text-sm md:text-base text-muted-foreground/90 leading-relaxed font-medium">
+                          <p className="text-sm md:text-base text-muted-foreground/80 leading-relaxed">
                             {project.longDescription}
                           </p>
                         </div>
@@ -322,8 +322,8 @@ export default function Projects() {
             <Card className="inline-block glass-card border-primary/20 hover:border-primary/40 hover:shadow-glow transition-all duration-500 overflow-hidden relative group">
               <div className="absolute inset-0 bg-hero-gradient opacity-0 group-hover:opacity-5 transition-opacity duration-500" />
               <CardContent className="p-8 relative z-10">
-                <h3 className="text-2xl font-bold tracking-tight mb-3">Constantly Exploring</h3>
-                <p className="text-base md:text-lg text-muted-foreground/80 leading-relaxed max-w-2xl mx-auto mb-6">
+                <h3 className="text-xl font-semibold tracking-tight mb-3">Constantly Exploring</h3>
+                <p className="text-sm md:text-base text-muted-foreground/80 leading-relaxed max-w-md mx-auto mb-6">
                   I'm actively working on new AI solutions and full-stack projects to push technological bounds.
                 </p>
                 <Button size="lg" className="bg-primary hover:bg-primary-glow text-primary-foreground shadow-elegant hover:shadow-glow transition-all duration-300 rounded-full group px-8" asChild>

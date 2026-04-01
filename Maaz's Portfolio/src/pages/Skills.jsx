@@ -67,7 +67,7 @@ export default function Skills() {
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <motion.div 
             initial={{ opacity: 0, y: -20 }}
@@ -92,8 +92,8 @@ export default function Skills() {
           >
             <Card className="inline-block glass-card shadow-elegant border-primary/20 hover:border-primary/50 hover:shadow-glow transition-all duration-500 overflow-hidden relative group">
               <div className="absolute inset-0 bg-hero-gradient opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
-              <CardContent className="p-8 relative z-10">
-                <h3 className="text-2xl font-bold mb-4 bg-hero-gradient bg-clip-text text-transparent">Full Stack Expertise</h3>
+              <CardContent className="p-6 relative z-10">
+                <h3 className="text-xl font-semibold tracking-tight mb-4 bg-hero-gradient bg-clip-text text-transparent">Full Stack Expertise</h3>
                 <div className="flex flex-wrap justify-center gap-3">
                   {["MongoDB", "Express", "React", "Node.js"].map((tech, index) => (
                     <motion.div 
@@ -135,7 +135,7 @@ export default function Skills() {
                         <div className="p-4 rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 mb-4 shadow-sm group-hover:shadow-glow">
                           <IconComponent className="w-8 h-8" />
                         </div>
-                        <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors tracking-tight">
+                        <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors tracking-tight">
                           {category.title}
                         </h3>
                       </div>

@@ -43,7 +43,7 @@ export default function About() {
           <motion.div variants={itemVariants} className="mb-14">
             <Card className="glass-card border-primary/20 shadow-elegant relative overflow-hidden group">
               <div className="absolute inset-0 bg-hero-gradient opacity-0 group-hover:opacity-5 transition-opacity duration-500" />
-              <CardContent className="p-8 md:p-10 relative z-10 space-y-6">
+              <CardContent className="p-6 relative z-10 space-y-5">
                 <p className="text-base md:text-lg text-muted-foreground/80 leading-relaxed">
                   I’m a full stack developer and AI enthusiast currently pursuing my B.E. at LJIET University, Ahmedabad (Class of 2027). I specialize in <strong className="bg-hero-gradient bg-clip-text text-transparent">building AI-powered applications</strong>, including computer vision systems, multi-agent AI platforms, and optimization-based simulations.
                 </p>
@@ -66,8 +66,8 @@ export default function About() {
                   <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110 text-primary transition-all duration-300 shadow-sm group-hover:shadow-glow">
                     <GraduationCap className="h-8 w-8" />
                   </div>
-                  <h3 className="text-2xl font-bold tracking-tight mb-3">Education</h3>
-                  <p className="text-muted-foreground/90 font-medium leading-relaxed">
+                  <h3 className="text-xl font-semibold tracking-tight mb-2">Education</h3>
+                  <p className="text-sm md:text-base text-muted-foreground/80 leading-relaxed">
                     B.E. in Computer Engineering – LJIET University, Ahmedabad (2027)
                   </p>
                 </CardContent>
@@ -81,8 +81,8 @@ export default function About() {
                   <div className="w-16 h-16 bg-accent/20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-accent group-hover:text-accent-foreground group-hover:scale-110 text-accent-foreground transition-all duration-300 shadow-sm group-hover:shadow-[0_0_30px_hsl(var(--accent)/0.3)]">
                     <Target className="h-8 w-8" />
                   </div>
-                  <h3 className="text-2xl font-bold tracking-tight mb-3">Goals</h3>
-                  <p className="text-muted-foreground/90 font-medium leading-relaxed">
+                  <h3 className="text-xl font-semibold tracking-tight mb-2">Goals</h3>
+                  <p className="text-sm md:text-base text-muted-foreground/80 leading-relaxed">
                     To become an AI-focused engineer building scalable, real-world intelligent systems that combine machine learning with strong backend architecture
                   </p>
                 </CardContent>
@@ -96,8 +96,8 @@ export default function About() {
                   <div className="w-16 h-16 bg-rose-500/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-rose-500 group-hover:text-white group-hover:scale-110 text-rose-500 transition-all duration-300 shadow-sm group-hover:shadow-[0_0_30px_rgba(244,63,94,0.3)]">
                     <Heart className="h-8 w-8" />
                   </div>
-                  <h3 className="text-2xl font-bold tracking-tight mb-3">Passion</h3>
-                  <p className="text-muted-foreground/90 font-medium leading-relaxed">
+                  <h3 className="text-xl font-semibold tracking-tight mb-2">Passion</h3>
+                  <p className="text-sm md:text-base text-muted-foreground/80 leading-relaxed">
                     Building AI-powered applications, simulation systems, and full-stack products that solve meaningful real-world problems
                   </p>
                 </CardContent>
